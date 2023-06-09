@@ -1,0 +1,1 @@
+C:\Portaria\Portaria\.venv\Scripts\activate.bat

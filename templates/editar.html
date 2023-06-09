@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    
+    <title>Editar Registro</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        form {
+            width: 500px;
+            margin: 0 auto;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: inline-block;
+            width: 150px;
+            font-weight: bold;
+        }
+        .form-group input[type="text"],
+        .form-group select {
+            width: 300px;
+            padding: 5px;
+            font-size: 14px;
+        }
+        .form-group button {
+            padding: 5px 10px;
+            font-size: 14px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .form-group button:hover {
+            background-color: #45a049;
+        }
+    </style>
+    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery.mask.min.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            $('input[name="cpf"]').mask('000.000.000-00');
+        });
+    </script>
+</head>
+<body>
+    <h1>Editar Registro</h1>
+    <form action="/editar/{{ registro[0] }}" method="POST">
+        <div class="form-group">
+            <label>Data:</label>
+            <input type="date" name="data" value="{{ registro[1] }}" required>
+        </div>
+        <div class="form-group">
+            <label>Horário:</label>
+            <input type="time" name="horario" value="{{ registro[2] }}" required>
+        </div>
+        <div class="form-group">
+            <label>Nome do Motorista:</label>
+            <input type="text" name="nome_motorista" value="{{ registro[3] }}" required>
+        </div>
+        <div class="form-group">
+            <label>CPF:</label>
+            <input type="number" name="cpf" value="{{ registro[4] }}" required>
+        </div>
+        <div class="form-group">
+            <label>Placa:</label>
+            <input type="text" name="placa" value="{{ registro[5] }}" required>
+        </div>
+        <div class="form-group">
+            <label>Nota Fiscal:</label>
+            <input type="number" name="nota_fiscal" value="{{ registro[6] }}" required>
+        </div>
+        <div class="form-group">
+            <label>Itens:</label>
+            <input type="text" name="itens" value="{{ registro[7] }}" required>
+        </div>
+        <div class="form-group">
+            <label>Fornecedor:</label>
+            <input type="text" name="fornecedor" value="{{ registro[8] }}" required>
+        </div>
+        <div class="form-group">
+            <label>Destino:</label>
+            <input type="text" name="destino" value="{{ registro[9] }}" required>
+        </div>
+        <div class="form-group">
+            <label>Horário de Entrada:</label>
+            <input type="date" name="horario_entrada" value="{{ registro[10] }}" required>
+        </div>
+        <div class="form-group">
+            <label>Horário de Saída:</label>
+            <input type="date" name="horario_saida" value="{{ registro[11] }}" required>
+        </div>
+        <div class="form-group">
+            <label>Porteiro:</label>
+            <input type="text" name="porteiro" value="{{ registro[12] }}" required>
+        </div>
+        <div class="form-group">
+            <label>Entrada/Saída:</label>
+            <select name="entrada_saida" required>
+                <option value="Entrada" {% if registro[13] == 'Entrada' %}selected{% endif %}>Entrada</option>
+                <option value="Saída" {% if registro[13] == 'Saída' %}selected{% endif %}>Saída</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Natureza da Operação:</label>
+            <input type="text" name="natureza_operacao" value="{{ registro[14] }}" required>
+        </div>
+        <div class="form-group">
+            <button type="submit">Salvar</button>
+        </div>
+    </form>
+</body>
+</html>
